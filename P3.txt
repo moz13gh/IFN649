@@ -1,0 +1,30 @@
+P3
+// C++ code
+//
+bool pushbutton1;
+bool pushbutton2;
+int ledpin=9;
+int brightness=0;
+
+void setup()
+{
+  pinMode(2, INPUT_PULLUP);
+  pinMode(8, INPUT_PULLUP);
+  pinMode(ledpin,OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+ pushbutton1= digitalRead(2);
+ pushbutton2= digitalRead(8);
+  
+  if(!pushbutton1&&brightness>0)
+  {brightness+=51;}
+else if (!pushbutton2&&brightness<255)
+{brightness-=51;}
+
+analogWrite(ledpin,brightness);
+Serial.println(brightness);
+delay(10);
+} 
