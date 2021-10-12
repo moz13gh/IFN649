@@ -4,6 +4,6 @@
 To-do
 
 ## Contributors
-### Moath Saeed A Al Ghamdi
-### Oliver Chen
-### Vishal Venkatraman
+### [Moath Saeed A Al Ghamdi]()
+### [Oliver Chen]()
+### [Vishal Venkatraman]()
