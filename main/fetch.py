@@ -4,7 +4,6 @@ from requests import get
 from dotenv import load_dotenv
 
 def getPM25():
-
     # Variables for constructing the API Call
     path = "https://api.waqi.info/feed/"
     city = "hongkong/"
