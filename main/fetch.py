@@ -25,6 +25,20 @@ def getPM25():
     print("Time Stamp: " + timeStamp)
     print("PM2.5 Rating: " + str(pm25Rating) + "\n")
 
-# If the .env file can be loaded, make the API calls
-if load_dotenv():
-    getPM25()
+def getHumidity():
+    pass
+
+def getTemperature():
+    pass
+
+def main():
+    # If the .env file can be loaded, make the API calls
+    if load_dotenv():
+        # TODO: Threading.
+        getPM25()
+        getHumidity()
+        getTemperature()
+
+
+if __name__ == "__main__":
+    main()

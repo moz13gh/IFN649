@@ -48,8 +48,5 @@ x = response.json()
 	weather_description = z[0]["description"]
 
 	# print following values
-	print(" humidity (in percentage) = " +
-					str(current_humidity) +
-		"\n description = " +
-					str(weather_description))
+	print(" humidity (in percentage) = " + str(current_humidity) +"\n description = " +str(weather_description))
 
