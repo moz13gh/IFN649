@@ -26,10 +26,13 @@ def getPM25():
     print("PM2.5 Rating: " + str(pm25Rating) + "\n")
 
 def getHumidity():
-    pass
-
+    # Look at the .env file
+    apiToken = os.getenv("humidity_api_token")
+    
 def getTemperature():
-    pass
+    # Save the api key to the .env file following the format of what is already there.
+    apiToken = os.getenv("temperature_api_token")
+    
 
 def main():
     # If the .env file can be loaded, make the API calls
