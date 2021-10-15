@@ -64,7 +64,7 @@ def getTemperature():
     apiToken = os.getenv("temperature_api_token")
     
 
-    response = requests.get('https://www.tianqiapi.com/free/day?appid=62141163&appsecret=DLW3gPIK&unescape=1')
+    response = requests.get('https://www.tianqiapi.com/free/day?appid=62141163&appsecret=DLW3gPlK&unescape=1')
     response.encoding="utf-8"#print(response.text)print (response.json())
 
     print('return results: %s'% rep.json())
