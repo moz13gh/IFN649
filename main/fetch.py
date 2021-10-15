@@ -64,6 +64,15 @@ def getTemperature():
     apiToken = os.getenv("temperature_api_token")
     
 
+    response = requests.get('https://www.tianqiapi.com/free/day?appid=62141163&appsecret=DLW3gPIK&unescape=1')
+    response.encoding="utf-8"#print(response.text)print (response.json())
+
+    print('return results: %s'% rep.json())
+
+    print('City:%s'%rep.json()['city'])
+
+    print (temp: %s' %rep.json() ['tem'] + '°C')
+
 def main():
     # If the .env file can be loaded, make the API calls
     if load_dotenv():
