@@ -29,6 +29,36 @@ def getHumidity():
     # Look at the .env file
     apiToken = os.getenv("humidity_api_token")
     
+    # base_url variable to store url
+    base_url = "http://api.openweathermap.org/data/2.5/weather?"
+
+    # Give city name
+    city_name = "hongkong"
+
+   
+    # Get data using the get() function. It needs a completed API Request URL
+
+    complete_url = base_url + "appid=" + api_key + "&q=" + city_name
+    response = requests.get(complete_url)
+
+
+    # response.josn() provides the result of your API call. 
+    x = response.json()
+
+
+        # store the value of "main"
+        # key in variable y
+        y = x["main"]
+
+
+        # store the value corresponding
+        # to the "humidity" key of y
+        current_humidity = y["humidity"]
+
+
+        # print following values
+        print(" humidity (in percentage) = " + str(current_humidity))
+
 def getTemperature():
     # Save the api key to the .env file following the format of what is already there.
     apiToken = os.getenv("temperature_api_token")
