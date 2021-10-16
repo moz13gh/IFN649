@@ -2,3 +2,5 @@ virtualenv/
 .vscode/
 main/.env
 frontend/frontend/__pycache__
+frontend/summary/__pycache__
+frontend/summary/migrations
