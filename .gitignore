@@ -1,7 +1,8 @@
 virtualenv/
 .vscode/
 .env
-
 frontend/frontend/__pycache__
-frontend/summary/__pycache__
-frontend/summary/migrations
+frontend/air_quality_api/__pycache__
+frontend/air_quality_api/migrations
+frontend/air_quality_api/__init__.py
+
