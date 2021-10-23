@@ -1,0 +1,13 @@
+body {
+    text-align: center;
+}
+
+
+#introText {
+    height: 50px;
+    width:800px;
+    background-color: #dea46b;
+    text-align: center;
+    line-height: 50px;
+    margin:auto;
+}

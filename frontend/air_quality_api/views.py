@@ -16,7 +16,7 @@ def getAPIData(request):
         "temperature_data": temperature_data
     }
 
-    return render(request, "group28/getAPIData.html", context)
+    return render(request, "air_quality_api/getAPIData.html", context)
 
 
 def getPM25():
@@ -84,4 +84,4 @@ def getTemperature():
 
 def setting(request):
 
-    return render(request, "group28/setting.html")
+    return render(request, "air_quality_api/setting.html")
