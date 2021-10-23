@@ -5,4 +5,12 @@ frontend/frontend/__pycache__
 frontend/air_quality_api/__pycache__
 frontend/air_quality_api/migrations
 frontend/air_quality_api/__init__.py
-
+frontend/cloud_ui/__pycache__
+frontend/cloud_ui/migrations
+frontend/cloud_ui/__init__.py
+frontend/preprocessing/__pycache__
+frontend/preprocessing/migrations
+frontend/preprocessing/__init__.py
+frontend/sensing/__pycache__
+frontend/sensing/migrations
+frontend/sensing/__init__.py
