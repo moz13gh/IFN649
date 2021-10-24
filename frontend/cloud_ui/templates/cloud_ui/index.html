@@ -92,6 +92,29 @@
             </th>
         </tr>
 
+        {% for item in peripherals_list %}
+        <tr>
+
+            <td>
+                {{item.id}}
+            </td>
+
+            <td>
+                {{item.name}}
+            </td>
+
+            <td>
+                {{item.online_status}}
+            </td>
+
+            <td>
+                {{item.activity_status}}
+            </td>
+           
+        </tr>
+        {% endfor %}
+
+
     </table>
 
     <pre></pre>

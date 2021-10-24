@@ -1,16 +1,22 @@
 from django.shortcuts import render
 import requests
+from preprocessing.models import Peripheral
 
 
 # Create your views here.
 def getProcessedData(request):
-    pm25_data = getPM25()
+    peripherals_list = list(Peripheral.objects.values())
 
-    print(pm25_data)
+
+
+    # pm25_data = getPM25()
+
+    # print(pm25_data)
 
     context = {
-        "pm25_data": pm25_data,
+        "peripherals_list": peripherals_list,
     }
+
     return render(request, "cloud_ui/index.html", context)
 
 

@@ -18,12 +18,11 @@ def getDatabaseData(request):
     # time_stamp = 
     severity = getHumiditySeverity(humidity_value)
     
-    temperature_value = temperature_data
+    temperature_value = temperature_data["tem"]
     # time_stamp = 
     severity = getTemperatureSeverity(humidity_value)
     
     # pm25_entry = Air_Quality.objects.create(pm25_value=pm25_value, time_stamp=time_stamp, severity=severity)
-
 
 def getPM25():
     # Variables for constructing the API Call
