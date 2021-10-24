@@ -11,23 +11,25 @@ def getAPIData():
     temperature_data = getTemperature()
 
     pm25_value = pm25_data["data"]["iaqi"]["pm25"]["v"]
-    time_stamp = pm25_data["data"]["time"]["s"]
+    # time_stamp = pm25_data["data"]["time"]["s"]
     severity = getPM25Severity(pm25_value)
 
-    # humidity_value = humidity_data["main"]["humidity"]
-    # time_stamp = humidity_data
-    # severity = getHumiditySeverity(humidity_value)
-    
-    # temperature_value = temperature_data["tem"]
-    # time_stamp = temperature_data
-    # severity = getTemperatureSeverity(humidity_value)
+    pm25_entry = Air_Quality_Reading(pm25_value=pm25_value, severity=severity)
+    pm25_entry.save()
 
-    # print(humidity_data)
+    humidity_value = humidity_data["main"]["humidity"]
+    # time_stamp = humidity_data
+    severity = getHumiditySeverity(humidity_value)
+    
+    temperature_value = temperature_data["tem"]
+    # time_stamp = temperature_data
+    severity = getTemperatureSeverity(temperature_value)
+
+    print(humidity_data)
     # print(pm25_data)
     # print(temperature_data)
 
-    pm25_entry = Air_Quality_Reading(time_stamp=time_stamp, pm25_value=pm25_value, severity=severity)
-    pm25_entry.save()
+
 
 
 
@@ -70,22 +72,25 @@ def getHumidity():
     # to the "humidity" key of y
     current_humidity = y["humidity"]
     # print following values
-    print(" humidity (in percentage) = " + str(current_humidity))
+    # print(" humidity (in percentage) = " + str(current_humidity))
     return response.json()
 
 def getTemperature():
     response = requests.get('https://www.tianqiapi.com/free/day?appid=62141163&appsecret=DLW3gPlK&unescape=0$cityid=101320101')
     response.encoding="utf-8"#print(response.text)print (response.json())
 
-    print('return results: %s'% response.json())
+    # print('return results: %s'% response.json())
 
-    print('City:%s'%response.json()['city'])
+    # print('City:%s'%response.json()['city'])
 
-    print ('Temperature: %s' %response.json() ['tem'] + '°C')
+    # print ('Temperature: %s' %response.json() ['tem'] + '°C')
 
     return response.json()
 
 def getPM25Severity(value):
+
+    value = int(value)
+
     if value >= 0 and value < 50:
         return "Good"
     if value > 50 and value < 100:
@@ -110,6 +115,9 @@ def getHumiditySeverity(value):
         return "High Humidity"
 
 def getTemperatureSeverity(value):
+
+    value = float(value)
+
     if value < 15:
         return "Low Temperature"
 
