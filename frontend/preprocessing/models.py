@@ -40,7 +40,7 @@ class Peripheral(models.Model):
     activity_status = models.CharField(max_length=30, choices=activities)
 
 class Action(models.Model):
-    peripheral_id = models.IntegerField()
+    peripheral_id = models.ForeignKey(Peripheral, on_delete=models.CASCADE)
     action = models.CharField(max_length=20)
     time_stamp = models.DateTimeField(db_column="Timestamp", default=tz.now)
 

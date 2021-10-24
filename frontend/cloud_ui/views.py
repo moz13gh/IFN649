@@ -10,6 +10,9 @@ def getProcessedData(request):
     # Call API call in preprocessing here. 
     getAPIData()
 
+    # TODO: Use recent API data to generate Actions.
+
+    # Prepare Context for UI Page.
     peripherals_list = list(Peripheral.objects.values())
     actions_list = list(Action.objects.values())
 
@@ -25,7 +28,7 @@ def getProcessedData(request):
         "actions_list": actions_list
     }
 
-    print(context)
+    # print(context)
 
     return render(request, "cloud_ui/index.html", context)
 
