@@ -12,24 +12,28 @@ def getProcessedData(request):
 
     # Prepare Context for UI Page.
     peripherals_list = list(Peripheral.objects.values())
-    actions_list = list()
+    
+    # actions_list = []
+
+        # GET the most recent action of each device type
+    # for item in peripherals_list:
+    #     temp = Action.objects.filter(peripheral_id=item["id"]).latest("time_stamp").values()
+    #     actions_list.append(temp)
+
+    # print(actions_list[0].action)
 
     current_humidity = Humidity_Reading.objects.latest('time_stamp')
     current_air_quality = Air_Quality_Reading.objects.latest('time_stamp')
     current_temperature = Temperature_Reading.objects.latest('time_stamp')
 
-    # GET the most recent action of each device type
-    for item in peripherals_list:
-        actions_list.append(Action.objects.filter(peripheral_id=item["id"]).latest("time_stamp"))
 
-    print(actions_list)
-    
+
     context = {
         "peripherals_list": peripherals_list,
         "current_humidity": current_humidity,
         "current_air_quality": current_air_quality,
         "current_temperature": current_temperature,
-        "actions_list": actions_list
+        # "actions_list": actions_list
     }
 
     return render(request, "cloud_ui/index.html", context)

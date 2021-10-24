@@ -38,6 +38,7 @@ class Peripheral(models.Model):
     category = models.CharField(max_length=30, choices=categories)
     online_status = models.BooleanField()
     activity_status = models.CharField(max_length=30, choices=activities)
+    current_action = models.CharField(max_length=30)
 
 class Action(models.Model):
     peripheral_id = models.ForeignKey(Peripheral, on_delete=models.CASCADE)
