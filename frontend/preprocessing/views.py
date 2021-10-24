@@ -82,46 +82,55 @@ def getTemperature():
     return response.json()
 
 def getPM25Severity(value):
-   # TODO Add actions based on severity values
     value = int(value)
 
     if value >= 0 and value < 50:
-        controlWindows("on")
+        # controlWindows("on")
+        # controlAirPurifier("off")
         return "Good"
     
     if value > 50 and value < 100:
-        controlWindows("on")
+        # controlWindows("on")
+        # controlAirPurifier("off")
         return "Moderate"
 
     if value > 100 and value < 150:
-        controlWindows("off")
+        # controlWindows("off")
+        # controlAirPurifier("off")
         return "Unhealthy for Sensitive Groups"
 
     if value > 150 and value < 200:
+        # controlWindows("off")
+        # controlAirPurifier("on")
         return "Unhealthy"
-        # TODO: turn on purifier
 
     if value > 200 and value < 300:
-        controlWindows("off")
+        # controlWindows("off")
+        # controlAirPurifier("on")
         return "Very Unhealthy"
-        # TODO: turn on purifier
 
     if value > 300:
-        controlWindows("off")
+        # controlWindows("off")
+        # controlAirPurifier("on")
         return "Hazardous"
-        # TODO: turn on purifier
 
 def getHumiditySeverity(value):
 
     value = float(value)
 
     if value < 40:
+        # controlWindows("on")
+        # controlDehumidifier("off")
         return "Low Humidity"
 
     if value >40 and value < 60:
+        # controlWindows("on")
+        # controlDehumidifier("off")
         return "Normal"
 
     if value > 60:
+        # controlWindows("off")
+        # controlDehumidifier("on")
         return "High Humidity"
 
 def getTemperatureSeverity(value):
