@@ -4,7 +4,7 @@ import requests
 import os
 # Create your views here.
 
-def getDatabaseData(request):
+def getAPIData(request):
 
     pm25_data = getPM25()
     humidity_data = getHumidity()
@@ -15,14 +15,19 @@ def getDatabaseData(request):
     severity = getPM25Severity(pm25_value)
 
     humidity_value = humidity_data["main"]["humidity"]
-    # time_stamp = 
+    time_stamp = humidity_data
     severity = getHumiditySeverity(humidity_value)
     
     temperature_value = temperature_data["tem"]
-    # time_stamp = 
+    time_stamp = temperature_data
     severity = getTemperatureSeverity(humidity_value)
-    
-    # pm25_entry = Air_Quality.objects.create(pm25_value=pm25_value, time_stamp=time_stamp, severity=severity)
+
+    print(humidity_data)
+    print(pm25_data)
+    print(temperature_data)
+
+
+
 
 def getPM25():
     # Variables for constructing the API Call

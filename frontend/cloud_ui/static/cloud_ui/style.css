@@ -1,0 +1,25 @@
+body {
+    text-align: center;
+}
+
+#introText {
+    height: 50px;
+    width:800px;
+    background-color: #dea46b;
+    text-align: center;
+    line-height: 50px;
+    margin:auto;
+}
+
+.temperature {
+    color: blue;
+}
+
+.pm25 {
+    color: red;
+}
+
+.humidity{
+    color: green;
+}
+

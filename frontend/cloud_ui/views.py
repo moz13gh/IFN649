@@ -1,18 +1,28 @@
 from django.shortcuts import render
 import requests
-from preprocessing.models import Peripheral
+from preprocessing.models import *
+from preprocessing.views import *
 
 
 # Create your views here.
 def getProcessedData(request):
+
+    # Call API call in preprocessing here. 
+    getAPIData(request)
+
     peripherals_list = list(Peripheral.objects.values())
-
-    # pm25_data = getPM25()
-
-    # print(pm25_data)
+    # TODO: Get current data / most recent data
+    current_humidity = list(Humidity_Reading.objects.values())
+    current_air_quality = list(Air_Quality_Reading.objects.values())
+    current_temperature = list(Temperature_Reading.objects.values())
+    actions = list(Action.objects.values())
 
     context = {
         "peripherals_list": peripherals_list,
+        "current_humidity": current_humidity,
+        "current_air_quality": current_air_quality,
+        "current_temperature": current_temperature,
+        "actions": actions
     }
 
     return render(request, "cloud_ui/index.html", context)
