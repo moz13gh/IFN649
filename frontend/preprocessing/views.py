@@ -4,18 +4,28 @@ import requests
 import os
 # Create your views here.
 
-def getAPIData(request):
+def getDatabaseData(request):
 
     pm25_data = getPM25()
+    humidity_data = getHumidity()
+    temperature_data = getTemperature()
 
     pm25_value = pm25_data["data"]["iaqi"]["pm25"]["v"]
     time_stamp = pm25_data["data"]["time"]["s"]
     severity = getPM25Severity(pm25_value)
 
+    humidity_value = humidity_data["main"]["humidity"]
+    # time_stamp = 
+    severity = getHumiditySeverity(humidity_value)
+    
+    temperature_value = temperature_data
+    # time_stamp = 
+    severity = getTemperatureSeverity(humidity_value)
+
+    
     pm25_entry = Air_Quality.objects.create(pm25_value=pm25_value, time_stamp=time_stamp, severity=severity)
 
-    # humidity_data = getHumidity()
-    # temperature_data = getTemperature()
+
 
 
 def getPM25():
@@ -36,6 +46,39 @@ def getPM25():
     # print("Location: " + location)
     # print("Time Stamp: " + timeStamp)
     # print("PM2.5 Rating: " + str(pm25Rating) + "\n")
+    return response.json()
+
+def getHumidity():
+    api_key = "68dcff5910beef2a5bb794c2c9417ee7"
+    # base_url variable to store url
+    base_url = "http://api.openweathermap.org/data/2.5/weather?"
+    # Give city name
+    city_name = "hongkong"
+    # Get data using the get() function. It needs a completed API Request URL
+    complete_url = base_url + "appid=" + api_key + "&q=" + city_name
+    response = requests.get(complete_url)
+    # response.josn() provides the result of your API call.
+    x = response.json()
+    # store the value of "main"
+    # key in variable y
+    y = x["main"]
+    # store the value corresponding
+    # to the "humidity" key of y
+    current_humidity = y["humidity"]
+    # print following values
+    print(" humidity (in percentage) = " + str(current_humidity))
+    return response.json()
+
+def getTemperature():
+    response = requests.get('https://www.tianqiapi.com/free/day?appid=62141163&appsecret=DLW3gPlK&unescape=0$cityid=101320101')
+    response.encoding="utf-8"#print(response.text)print (response.json())
+
+    print('return results: %s'% response.json())
+
+    print('City:%s'%response.json()['city'])
+
+    print ('Temperature: %s' %response.json() ['tem'] + '°C')
+
     return response.json()
 
 def getPM25Severity(value):
