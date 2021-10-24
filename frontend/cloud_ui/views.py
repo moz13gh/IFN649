@@ -8,7 +8,7 @@ from preprocessing.views import *
 def getProcessedData(request):
 
     # Call API call in preprocessing here. 
-    getAPIData(request)
+    getAPIData()
 
     peripherals_list = list(Peripheral.objects.values())
     # TODO: Get current data / most recent data

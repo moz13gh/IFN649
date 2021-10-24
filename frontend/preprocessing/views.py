@@ -4,7 +4,7 @@ import requests
 import os
 # Create your views here.
 
-def getAPIData(request):
+def getAPIData():
 
     pm25_data = getPM25()
     humidity_data = getHumidity()
@@ -14,17 +14,20 @@ def getAPIData(request):
     time_stamp = pm25_data["data"]["time"]["s"]
     severity = getPM25Severity(pm25_value)
 
-    humidity_value = humidity_data["main"]["humidity"]
-    time_stamp = humidity_data
-    severity = getHumiditySeverity(humidity_value)
+    # humidity_value = humidity_data["main"]["humidity"]
+    # time_stamp = humidity_data
+    # severity = getHumiditySeverity(humidity_value)
     
-    temperature_value = temperature_data["tem"]
-    time_stamp = temperature_data
-    severity = getTemperatureSeverity(humidity_value)
+    # temperature_value = temperature_data["tem"]
+    # time_stamp = temperature_data
+    # severity = getTemperatureSeverity(humidity_value)
 
-    print(humidity_data)
-    print(pm25_data)
-    print(temperature_data)
+    # print(humidity_data)
+    # print(pm25_data)
+    # print(temperature_data)
+
+    pm25_entry = Air_Quality_Reading(time_stamp=time_stamp, pm25_value=pm25_value, severity=severity)
+    pm25_entry.save()
 
 
 

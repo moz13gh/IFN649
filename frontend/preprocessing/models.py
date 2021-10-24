@@ -11,8 +11,7 @@ class Temperature_Reading(models.Model):
 
 class Air_Quality_Reading(models.Model):
     pm25_value = models.FloatField()
-    time_stamp = models.TimeField(auto_now=False, auto_now_add=False)
-    date_stamp = models.DateField(auto_created=True)
+    time_stamp = models.DateTimeField()
     severity = models.CharField(max_length=30)
 
 class Humidity_Reading(models.Model):
