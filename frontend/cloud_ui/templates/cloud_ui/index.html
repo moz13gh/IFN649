@@ -41,7 +41,7 @@
             <th>Time Stamp</th>
             <th>Data</th>
             <th>Information</th>
-            <th>Recent Action</th>
+            <!-- <th>Recent Action</th> -->
         </tr>
         <tr>
         
@@ -59,9 +59,6 @@
                 {{current_temperature.severity}}
             </td>
 
-            <td>
-                Actions
-            </td>
         
         </tr>
         
@@ -79,10 +76,6 @@
             
             <td class="pm25">
                 {{current_air_quality.severity}}
-            </td>
-
-            <td>
-                Actions
             </td>
         
         </tr>
@@ -105,9 +98,6 @@
                 {{current_humidity.severity}}
             </td>
 
-            <td>
-               
-            </td>
 
         </tr>
     </table>
@@ -117,7 +107,7 @@
     <table id="peripheralsTable" align="center" border="3">
         <tr>
             <th>
-                Peripheral ID
+                Peripheral Type
             </th>
             
             <th>
@@ -125,11 +115,15 @@
             </th>
             
             <th>
-                Online Status (ON/OFF)
+                Online
             </th>
+<!-- 
+            <th>
+                Status
+            </th> -->
 
             <th>
-                Current Action
+                Recent Action
             </th>
         </tr>
 
@@ -137,7 +131,7 @@
         <tr>
 
             <td>
-                {{item.id}}
+                {{item.category}}
             </td>
 
             <td>
@@ -149,7 +143,9 @@
             </td>
 
             <td>
-                {{item.activity_status}}
+                {{
+                    
+                }}
             </td>
            
         </tr>

@@ -2,7 +2,6 @@ from django.shortcuts import render
 import requests
 from .models import *
 from .actions import *
-# Create your views here.
 
 def getAPIData():
 
@@ -27,6 +26,41 @@ def getAPIData():
     
     temperature_entry = Temperature_Reading(temperature_value=temperature_value, severity=severity)
     temperature_entry.save()
+
+    # TODO: Make Action Decisions
+    # Decide for windows
+    # If air quality good or temperature room or humidity low to normal, open window  
+
+    # Dehumidifier Actions
+    if humidity_value > 60:
+        controlDehumidifier("on")
+        controlWindows("off")
+    elif humidity_value < 60:
+        controlDehumidifier("off")
+        controlWindows("on")
+
+    # Air Purifier Actions
+    if pm25_value > 150:
+        controlAirPurifier("on")
+        controlWindows("off")
+    elif pm25_value < 150:
+        controlAirPurifier("off")
+        controlWindows("on")
+
+    # Air Conditioner Actions
+    if int(temperature_value) < 15 or int(temperature_value) > 30:
+        controlAirConditioner("on")
+        controlWindows("off")
+    else:
+        controlAirConditioner("off")
+        controlWindows("on")
+
+    # Fan Actions
+    if int(temperature_value) > 15 and int(temperature_value) < 30:
+        controlFans("on")
+    else:
+        controlFans("off")
+
 
 def getPM25():
     # Variables for constructing the API Call

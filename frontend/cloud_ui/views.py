@@ -8,16 +8,22 @@ from preprocessing.views import *
 def getProcessedData(request):
 
     # Call API call in preprocessing here. 
-    getAPIData()
+    getAPIData()    
 
     # Prepare Context for UI Page.
     peripherals_list = list(Peripheral.objects.values())
-    actions_list = list(Action.objects.values())
+    actions_list = list()
 
     current_humidity = Humidity_Reading.objects.latest('time_stamp')
     current_air_quality = Air_Quality_Reading.objects.latest('time_stamp')
-    current_temperature = Temperature_Reading.objects.latest('time_stamp')    
+    current_temperature = Temperature_Reading.objects.latest('time_stamp')
 
+    # GET the most recent action of each device type
+    for item in peripherals_list:
+        actions_list.append(Action.objects.filter(peripheral_id=item["id"]).latest("time_stamp"))
+
+    print(actions_list)
+    
     context = {
         "peripherals_list": peripherals_list,
         "current_humidity": current_humidity,
@@ -25,8 +31,6 @@ def getProcessedData(request):
         "current_temperature": current_temperature,
         "actions_list": actions_list
     }
-
-    # print(context)
 
     return render(request, "cloud_ui/index.html", context)
 
