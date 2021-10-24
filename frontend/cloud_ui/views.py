@@ -7,8 +7,6 @@ from preprocessing.models import Peripheral
 def getProcessedData(request):
     peripherals_list = list(Peripheral.objects.values())
 
-
-
     # pm25_data = getPM25()
 
     # print(pm25_data)
@@ -45,3 +43,8 @@ def getPM25():
     print("PM2.5 Rating: " + str(pm25Rating) + "\n")
 
     return response.json()
+
+
+def getSettings(request):
+    return render(request, "cloud_ui/settings.html")
+
