@@ -37,9 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # "air_quality_api.apps.AirQualityApiConfig",
-    "cloud_ui.apps.CloudUiConfig"
-    # "rest_framework",
+    "cloud_ui.apps.CloudUiConfig",
+    "preprocessing.apps.PreprocessingConfig"
 ]
 
 MIDDLEWARE = [

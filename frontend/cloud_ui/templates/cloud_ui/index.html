@@ -7,8 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Living Air Quality - Group 28 </title>
-    
-    <link rel="stylesheet" href="{{STATIC_URL}}style.css">
+
+
+    <style>
+        div {
+            height: 50px;
+            width:800px;
+            background-color: #dea46b;
+            text-align: center;
+            line-height: 50px;
+            margin:auto;
+        }
+    </style>
 
 </head>
 
@@ -31,7 +41,7 @@
 
     <pre></pre>
 
-    <table align="center" border="3">
+    <table id="statusTable" align="center" border="3">
         <caption align="center">the dataset table of living space air quality maintenance system</caption>
         <tr>
             <th></th>
@@ -60,6 +70,30 @@
             <td style="color:#00FF00">Turn on the dehumidifier/Turn on the humidifier</td>
         </tr>
     </table>
+
+    <pre></pre>
+
+    <table id="peripheralsTable" align="center" border="3">
+        <tr>
+            <th>
+                Peripheral ID
+            </th>
+            
+            <th>
+                Peripheral Name
+            </th>
+            
+            <th>
+                Online Status (ON/OFF)
+            </th>
+
+            <th>
+                Current Action
+            </th>
+        </tr>
+
+    </table>
+
     <pre></pre>
 
     <a href="http://127.0.0.1:8000/setting/" target="_blank">
