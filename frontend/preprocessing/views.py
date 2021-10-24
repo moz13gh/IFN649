@@ -21,11 +21,8 @@ def getDatabaseData(request):
     temperature_value = temperature_data
     # time_stamp = 
     severity = getTemperatureSeverity(humidity_value)
-
     
-    pm25_entry = Air_Quality.objects.create(pm25_value=pm25_value, time_stamp=time_stamp, severity=severity)
-
-
+    # pm25_entry = Air_Quality.objects.create(pm25_value=pm25_value, time_stamp=time_stamp, severity=severity)
 
 
 def getPM25():
@@ -94,3 +91,26 @@ def getPM25Severity(value):
         return "Very Unhealthy"
     if value > 300:
         return "Hazardous"
+
+def getHumiditySeverity(value):
+    if value < 40:
+        return "Low Humidity"
+
+    if value >40 and value < 60:
+        return "Normal"
+
+    if value > 60:
+        return "High Humidity"
+
+def getTemperatureSeverity(value):
+    if value < 15:
+        return "Low Temperature"
+
+    if value > 15 and value < 26:
+        return "Optimal Temperature"
+
+    if value > 26 and value < 30:
+        return "Moderately High Temperature"
+
+    if value > 30:
+        return "Very High Temperature"

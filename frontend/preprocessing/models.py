@@ -33,7 +33,6 @@ class Peripheral(models.Model):
         ("Sleep", "Sleep"),
     )
 
-
     name = models.CharField(max_length=30)
     category = models.CharField(max_length=30, choices=categories)
     online_status = models.BooleanField()
