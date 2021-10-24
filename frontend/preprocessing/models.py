@@ -43,10 +43,3 @@ class Action(models.Model):
     peripheral_id = models.ForeignKey(Peripheral, on_delete=models.CASCADE)
     action = models.CharField(max_length=20)
     time_stamp = models.DateTimeField(db_column="Timestamp", default=tz.now)
-
-
-
-# class Air_Qualty_Serializer(serializers.Serializer):
-#     pm25_value = serializers.FloatField()
-#     time_stamp = serializers.TimeField()
-#     severity = serializers.CharField()

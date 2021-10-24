@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from .models import *
 import requests
-import os
+from .models import *
+from .actions import *
 # Create your views here.
 
 def getAPIData():
@@ -27,11 +27,6 @@ def getAPIData():
     
     temperature_entry = Temperature_Reading(temperature_value=temperature_value, severity=severity)
     temperature_entry.save()
-    
-    # print(humidity_data)
-    # # print(pm25_data)
-    # # print(temperature_data)
-
 
 def getPM25():
     # Variables for constructing the API Call
@@ -87,21 +82,34 @@ def getTemperature():
     return response.json()
 
 def getPM25Severity(value):
-
+   # TODO Add actions based on severity values
     value = int(value)
 
     if value >= 0 and value < 50:
+        controlWindows("on")
         return "Good"
+    
     if value > 50 and value < 100:
+        controlWindows("on")
         return "Moderate"
+
     if value > 100 and value < 150:
+        controlWindows("off")
         return "Unhealthy for Sensitive Groups"
+
     if value > 150 and value < 200:
         return "Unhealthy"
+        # TODO: turn on purifier
+
     if value > 200 and value < 300:
+        controlWindows("off")
         return "Very Unhealthy"
+        # TODO: turn on purifier
+
     if value > 300:
+        controlWindows("off")
         return "Hazardous"
+        # TODO: turn on purifier
 
 def getHumiditySeverity(value):
 
