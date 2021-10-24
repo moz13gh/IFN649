@@ -1,5 +1,12 @@
 from .models import Action, Peripheral
 
+defined_actions = {
+    "open": "Open",
+    "close": "Close",
+    "on": "Turn on",
+    "off": "Turn off"
+}
+
 def controlWindows(action):
     # Get list of windows
     window_list = Peripheral.objects.filter(category="Window")
@@ -8,13 +15,19 @@ def controlWindows(action):
     if len(window_list) > 0:
         if action == "on":
             for item in window_list:
-                action_entry = Action(action="Open Window", peripheral_id=item)
+                action_entry = Action(action=defined_actions["open"], peripheral_id=item)
                 action_entry.save()
+
+                item.current_action = defined_actions["open"]
+                item.save()
 
         elif action == "off":
             for item in window_list:
-                action_entry = Action(action="Close Window", peripheral_id=item)
+                action_entry = Action(action=defined_actions["close"], peripheral_id=item)
                 action_entry.save()
+
+                item.current_action = defined_actions["close"]
+                item.save()
     # If not, do nothing
     else:
         pass
@@ -27,13 +40,19 @@ def controlFans(action):
     if len(fan_list) > 0:
         if action == "on":
             for item in fan_list:
-                action_entry = Action(action="Turn on Fan", peripheral_id=item)
+                action_entry = Action(action=defined_actions["on"], peripheral_id=item)
                 action_entry.save()
+
+                item.current_action = defined_actions["on"]
+                item.save()
 
         elif action == "off":
             for item in fan_list:
-                action_entry = Action(action="Turn off Fan", peripheral_id=item)
+                action_entry = Action(action=defined_actions["off"], peripheral_id=item)
                 action_entry.save()
+
+                item.current_action = defined_actions["off"]
+                item.save()
     # If not, do nothing
     else:
         pass
@@ -46,13 +65,19 @@ def controlAirConditioner(action):
     if len(air_conditioner_list) > 0:
         if action == "on":
             for item in air_conditioner_list:
-                action_entry = Action(action="Turn on Air Conditioner", peripheral_id=item)
+                action_entry = Action(action=defined_actions["on"], peripheral_id=item)
                 action_entry.save()
+
+                item.current_action = defined_actions["on"]
+                item.save()
 
         elif action == "off":
             for item in air_conditioner_list:
-                action_entry = Action(action="Turn off Air Conditioner", peripheral_id=item)
+                action_entry = Action(action=defined_actions["off"], peripheral_id=item)
                 action_entry.save()
+
+                item.current_action = defined_actions["off"]
+                item.save()
     # If not, do nothing
     else:
         pass
@@ -63,13 +88,16 @@ def controlAirPurifier(action):
     if len(air_purifier_list) > 0:
         if action == "on":
             for item in air_purifier_list:
-                action_entry = Action(action="Turn on Air Purifier", peripheral_id=item)
+                action_entry = Action(action=defined_actions["on"], peripheral_id=item)
                 action_entry.save()
 
         elif action == "off":
             for item in air_purifier_list:
-                action_entry = Action(action="Turn off Air Purifier", peripheral_id=item)
+                action_entry = Action(action=defined_actions["off"], peripheral_id=item)
                 action_entry.save()
+
+                item.current_action = defined_actions["off"]
+                item.save()
     else:
         pass
 
@@ -79,12 +107,18 @@ def controlDehumidifier(action):
     if len(dehumidifier_list) > 0:
         if action == "on":
             for item in dehumidifier_list:
-                action_entry = Action(action="Turn on Dehumidifier", peripheral_id=item)
+                action_entry = Action(action=defined_actions["on"], peripheral_id=item)
                 action_entry.save()
+
+                item.current_action = defined_actions["on"]
+                item.save()
 
         elif action == "off":
             for item in dehumidifier_list:
-                action_entry = Action(action="Turn off Dehumidifier", peripheral_id=item)
+                action_entry = Action(action=defined_actions["off"], peripheral_id=item)
                 action_entry.save()
+
+                item.current_action = defined_actions["off"]
+                item.save()
     else:
         pass

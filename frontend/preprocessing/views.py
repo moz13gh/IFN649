@@ -56,7 +56,7 @@ def getAPIData():
         controlWindows("on")
 
     # Fan Actions
-    if int(temperature_value) > 15 and int(temperature_value) < 30:
+    if int(temperature_value) > 25 and int(temperature_value) < 30:
         controlFans("on")
     else:
         controlFans("off")
