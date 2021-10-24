@@ -11,19 +11,21 @@ def getProcessedData(request):
     getAPIData()
 
     peripherals_list = list(Peripheral.objects.values())
-    # TODO: Get current data / most recent data
-    current_humidity = list(Humidity_Reading.objects.values())
-    current_air_quality = list(Air_Quality_Reading.objects.values())
-    current_temperature = list(Temperature_Reading.objects.values())
-    actions = list(Action.objects.values())
+    actions_list = list(Action.objects.values())
+
+    current_humidity = Humidity_Reading.objects.latest('time_stamp')
+    current_air_quality = Air_Quality_Reading.objects.latest('time_stamp')
+    current_temperature = Temperature_Reading.objects.latest('time_stamp')    
 
     context = {
         "peripherals_list": peripherals_list,
         "current_humidity": current_humidity,
         "current_air_quality": current_air_quality,
         "current_temperature": current_temperature,
-        "actions": actions
+        "actions_list": actions_list
     }
+
+    print(context)
 
     return render(request, "cloud_ui/index.html", context)
 

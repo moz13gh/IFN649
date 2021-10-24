@@ -23,3 +23,6 @@ body {
     color: green;
 }
 
+td {
+    padding: 5px;
+}

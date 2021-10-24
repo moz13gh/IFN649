@@ -38,52 +38,77 @@
         <caption align="center">the dataset table of living space air quality maintenance system</caption>
         <tr>
             <th></th>
-            <th>Date</th>
-            <th>Time</th>
+            <th>Time Stamp</th>
             <th>Data</th>
             <th>Information</th>
-            <th>Last Action</th>
+            <th>Recent Action</th>
         </tr>
         <tr>
         
             <td class="temperature">Temperature</td>
 
             <td class="temperature">
+                {{current_temperature.time_stamp}}
+            </td>
+
+            <td class="temperature">
+                {{current_temperature.temperature_value}}°C
+            </td>
+
+            <td class="temperature">
+                {{current_temperature.severity}}
+            </td>
+
+            <td>
+                Actions
+            </td>
+        
+        </tr>
+        
+        <tr>
+            <td class="pm25">Air Quality (PM2.5)</td>
+            
+            <td class="pm25">
+                {{current_air_quality.time_stamp}}
                 
             </td>
-
-            <td class="temperature">
-
-            </td>
-
-            <td class="temperature">
-
-            </td>
-        
-        </tr>
-        
-        <tr>
-            <td class="pm25">PM2.5</td>
+            
             <td class="pm25">
-                {{pm25_data.data.iaqi.pm25.v}}
+                {{current_air_quality.pm25_value}}
             </td>
             
-            <td class="pm25">normal/abnormal</td>
-            
-            <td class="pm25">open windows/close windows</td>
+            <td class="pm25">
+                {{current_air_quality.severity}}
+            </td>
+
+            <td>
+                Actions
+            </td>
         
         </tr>
         
         <tr>
-            <td class="humidity">humidity</td>
-
             <td class="humidity">
-                {{humidity_data.main.humidity}}
+                Humidity
+            </td>
+                
+            <td class="humidity">
+                {{current_air_quality.time_stamp}}
             </td>
             
-            <td class="humidity">normal/abnormal</td>
+            <td class="humidity">
+                {{current_humidity.humidity_value}}
+
+            </td>
             
-            <td class="humidity">Turn on the dehumidifier/Turn on the humidifier</td>
+            <td class="humidity">
+                {{current_humidity.severity}}
+            </td>
+
+            <td>
+                Actions
+            </td>
+
         </tr>
     </table>
 

@@ -11,27 +11,26 @@ def getAPIData():
     temperature_data = getTemperature()
 
     pm25_value = pm25_data["data"]["iaqi"]["pm25"]["v"]
-    # time_stamp = pm25_data["data"]["time"]["s"]
     severity = getPM25Severity(pm25_value)
 
     pm25_entry = Air_Quality_Reading(pm25_value=pm25_value, severity=severity)
     pm25_entry.save()
 
     humidity_value = humidity_data["main"]["humidity"]
-    # time_stamp = humidity_data
     severity = getHumiditySeverity(humidity_value)
+
+    humidity_entry = Humidity_Reading(humidity_value=humidity_value, severity=severity)
+    humidity_entry.save()
     
     temperature_value = temperature_data["tem"]
-    # time_stamp = temperature_data
     severity = getTemperatureSeverity(temperature_value)
-
-    print(humidity_data)
-    # print(pm25_data)
-    # print(temperature_data)
-
-
-
-
+    
+    temperature_entry = Temperature_Reading(temperature_value=temperature_value, severity=severity)
+    temperature_entry.save()
+    
+    # print(humidity_data)
+    # # print(pm25_data)
+    # # print(temperature_data)
 
 
 def getPM25():
@@ -105,6 +104,9 @@ def getPM25Severity(value):
         return "Hazardous"
 
 def getHumiditySeverity(value):
+
+    value = float(value)
+
     if value < 40:
         return "Low Humidity"
 
